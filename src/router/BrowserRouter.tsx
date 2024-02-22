@@ -1,7 +1,7 @@
 import { Navigate, createBrowserRouter } from "react-router-dom";
 import { AppRoutes, BASE_ROUTE } from "./Routes.ts";
 import App from "../App.tsx";
-import RemindersList from "../dashboard/reminders/RemindersList.tsx";
+import RemindersList from "../dashboard/reminders/index/RemindersList.tsx";
 import ContactsList from "../dashboard/contacts/ContactsList.tsx";
 import HomePageView from "../dashboard/index/HomePageView.tsx";
 

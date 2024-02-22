@@ -1,5 +1,5 @@
-import Button from "../../generics/Button.tsx";
-import ReminderCard from "./components/ReminderCard.tsx";
+import Button from "../../../generics/Button.tsx";
+import ReminderCard from "../components/ReminderCard.tsx";
 import { BsPlus } from "@react-icons/all-files/bs/BsPlus.js";
 
 const RemindersList = () => {
