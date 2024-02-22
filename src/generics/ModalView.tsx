@@ -1,27 +1,14 @@
 import { Dialog, Transition } from "@headlessui/react";
-import { Fragment } from "react";
-import ReminderForm from "./components/ReminderForm.tsx";
+import React, { Fragment } from "react";
 
 interface OwnProps {
-  isAddReminderModalOpen: boolean;
-  setIsAddReminderModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  children: React.ReactNode;
 }
 
-const AddReminderModal: React.FC<OwnProps> = ({
-  isAddReminderModalOpen,
-  setIsAddReminderModalOpen,
-}) => {
-  const handleCloseAddReminderModal = () => {
-    setIsAddReminderModalOpen(false);
-  };
-
+const ModalView: React.FC<OwnProps> = ({ children }) => {
   return (
-    <Transition appear show={isAddReminderModalOpen} as={Fragment}>
-      <Dialog
-        as="div"
-        className="relative z-10"
-        onClose={handleCloseAddReminderModal}
-      >
+    <Transition appear show={false} as={Fragment}>
+      <Dialog as="div" className="relative z-10" onClose={() => {}}>
         <Transition.Child
           as={Fragment}
           enter="ease-out duration-300"
@@ -52,7 +39,7 @@ const AddReminderModal: React.FC<OwnProps> = ({
                 >
                   add reminder
                 </Dialog.Title>
-                <ReminderForm />
+                {children}
               </Dialog.Panel>
             </Transition.Child>
           </div>
@@ -61,4 +48,4 @@ const AddReminderModal: React.FC<OwnProps> = ({
     </Transition>
   );
 };
-export default AddReminderModal;
+export default ModalView;

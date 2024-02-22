@@ -1,5 +1,5 @@
 import { Outlet } from "react-router-dom";
-import SideNavbar from "./components/SideNavbar.tsx";
+import SideNavbar from "./generics/SideNavbar.tsx";
 
 const App: React.FC = () => {
   return (
