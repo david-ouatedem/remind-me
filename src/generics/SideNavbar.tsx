@@ -10,7 +10,7 @@ const appRoutes = [
   },
   {
     path: AppRoutes.reminders,
-    name: "reminders",
+    name: "rappels",
     icon: "",
   },
   {

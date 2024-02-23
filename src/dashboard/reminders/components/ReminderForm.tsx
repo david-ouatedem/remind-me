@@ -2,6 +2,7 @@ import { DaysOfTheWeek } from "../../../domain/reminders/DaysOfTheWeek.ts";
 import Button from "../../../generics/Button.tsx";
 import DatePicker from "../../../generics/DatePicker.tsx";
 import InputCheckbox from "../../../generics/InputCheckbox.tsx";
+import InputTime from "../../../generics/InputTime.tsx";
 import RadioInput from "../../../generics/RadioInput.tsx";
 import TextArea from "../../../generics/TextArea.tsx";
 import TextInput from "../../../generics/TextInput.tsx";
@@ -35,6 +36,9 @@ const ReminderForm = () => {
             <DatePicker htmlFor="date-picker" label="choisir la date" />
           </div>
         </div>
+      </div>
+      <div className="mt-2">
+        <InputTime />
       </div>
       <div className="mt-2">
         <TextArea htmlFor="message-text" label="message" />
