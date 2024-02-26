@@ -1,14 +1,30 @@
 import ReminderForm from "../components/ReminderForm.tsx";
 import { BsXCircleFill } from "@react-icons/all-files/bs/BsXCircleFill.js";
+import { RemindersBehavior } from "../index/useReminders.ts";
+import Button from "../../../generics/Button.tsx";
 
-const AddReminderPageView = () => {
+interface OwnProps {
+  remindersBehavior: RemindersBehavior;
+}
+
+const AddReminderPageView: React.FC<OwnProps> = ({ remindersBehavior }) => {
+  const { reminderPageIsOpen, handleCloseAddReminderPage } = remindersBehavior;
   return (
-    <div className="absolute z-50 top-0 right-0 bg-white p-5">
-      <div className="flex justify-end">
-        <BsXCircleFill size="2rem" className="fill-secondary" />
-      </div>
-      <ReminderForm />
-    </div>
+    <>
+      {reminderPageIsOpen && (
+        <div className="absolute z-50 top-0 right-0 bg-white p-5">
+          <div className="flex justify-end">
+            <Button
+              onClick={() => handleCloseAddReminderPage()}
+              className="border-none"
+            >
+              <BsXCircleFill size="2rem" className="fill-tertiary" />
+            </Button>
+          </div>
+          <ReminderForm remindersBehavior={remindersBehavior} />
+        </div>
+      )}
+    </>
   );
 };
 

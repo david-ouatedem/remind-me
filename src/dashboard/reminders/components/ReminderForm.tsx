@@ -6,35 +6,54 @@ import InputTime from "../../../generics/InputTime.tsx";
 import RadioInput from "../../../generics/RadioInput.tsx";
 import TextArea from "../../../generics/TextArea.tsx";
 import TextInput from "../../../generics/TextInput.tsx";
+import { RemindersBehavior } from "../index/useReminders.ts";
 
-const ReminderForm = () => {
+interface OwnProps {
+  remindersBehavior: RemindersBehavior;
+}
+
+const ReminderForm: React.FC<OwnProps> = ({ remindersBehavior }) => {
   const { MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY, SUNDAY } =
     DaysOfTheWeek;
+  const { handleChangeDateRadioOption, selectedRadioOption } =
+    remindersBehavior;
   return (
     <form action="">
       <TextInput htmlFor="title" type="text" />
       <div className="flex items-start gap-20 mt-2">
         <div>
           <div>
-            <RadioInput name="date-radio" label="jours" />
+            <RadioInput
+              onChange={(e) => handleChangeDateRadioOption(e)}
+              name="date-radio"
+              label="jours"
+            />
           </div>
-          <div className="mt-2">
-            <InputCheckbox label="lundi" name={MONDAY} />
-            <InputCheckbox label="mardi" name={TUESDAY} />
-            <InputCheckbox label="mercredi" name={WEDNESDAY} />
-            <InputCheckbox label="jeudi" name={THURSDAY} />
-            <InputCheckbox label="vendredi" name={FRIDAY} />
-            <InputCheckbox label="samedi" name={SATURDAY} />
-            <InputCheckbox label="dimanche" name={SUNDAY} />
-          </div>
+          {selectedRadioOption === "jours" && (
+            <div className="mt-2">
+              <InputCheckbox label="lundi" name={MONDAY} />
+              <InputCheckbox label="mardi" name={TUESDAY} />
+              <InputCheckbox label="mercredi" name={WEDNESDAY} />
+              <InputCheckbox label="jeudi" name={THURSDAY} />
+              <InputCheckbox label="vendredi" name={FRIDAY} />
+              <InputCheckbox label="samedi" name={SATURDAY} />
+              <InputCheckbox label="dimanche" name={SUNDAY} />
+            </div>
+          )}
         </div>
         <div>
           <div>
-            <RadioInput name="date-radio" label="date" />
+            <RadioInput
+              onChange={(e) => handleChangeDateRadioOption(e)}
+              name="date-radio"
+              label="date"
+            />
           </div>
-          <div className="mt-2">
-            <DatePicker htmlFor="date-picker" label="choisir la date" />
-          </div>
+          {selectedRadioOption === "date" && (
+            <div className="mt-2">
+              <DatePicker htmlFor="date-picker" label="choisir la date" />
+            </div>
+          )}
         </div>
       </div>
       <div className="mt-2">

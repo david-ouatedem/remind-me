@@ -1,9 +1,11 @@
-interface OwnProps {
+import { InputHTMLAttributes } from "react";
+
+interface OwnProps extends InputHTMLAttributes<HTMLInputElement> {
   name: string;
   label: string;
 }
 
-const RadioInput: React.FC<OwnProps> = ({ name, label }) => {
+const RadioInput: React.FC<OwnProps> = ({ name, label, ...props }) => {
   return (
     <div className="flex items-center gap-2">
       <label
@@ -12,7 +14,14 @@ const RadioInput: React.FC<OwnProps> = ({ name, label }) => {
       >
         {label}
       </label>
-      <input name={name} type="radio" id={name} required />
+      <input
+        value={label}
+        name={name}
+        type="radio"
+        id={name}
+        {...props}
+        required
+      />
     </div>
   );
 };

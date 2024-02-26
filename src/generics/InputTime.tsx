@@ -1,15 +1,18 @@
 const InputTime = () => {
   return (
     <div className="flex items-center gap-2">
-      <label htmlFor="time-input">Select a time:</label>
+      <label
+        className="capitalize text-lg font-medium text-secondary flex flex-col items-start gap-1"
+        htmlFor="time-input"
+      >
+        Chosir l'heure:
+      </label>
       <input
         type="time"
         id="time-input"
         name="time"
         step="3600"
-        // min="00:00"
-        // max="23:59"
-        // pattern="[0-2][0-9]:[0-5][0-9]"
+        className="rounded-md border border-primary outline-none focus:border-tertiary p-2 text-secondary bg-primary bg-opacity-20"
       ></input>
     </div>
   );
