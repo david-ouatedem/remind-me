@@ -1,9 +1,11 @@
-interface OwnProps {
+import { InputHTMLAttributes } from "react";
+
+interface OwnProps extends InputHTMLAttributes<HTMLInputElement> {
   htmlFor: string;
   type: React.HTMLInputTypeAttribute | undefined;
 }
 
-const TextInput: React.FC<OwnProps> = ({ htmlFor, type }) => {
+const TextInput: React.FC<OwnProps> = ({ htmlFor, type, ...props }) => {
   return (
     <div>
       <label
@@ -17,6 +19,7 @@ const TextInput: React.FC<OwnProps> = ({ htmlFor, type }) => {
         type={type}
         id={htmlFor}
         required
+        {...props}
       />
     </div>
   );

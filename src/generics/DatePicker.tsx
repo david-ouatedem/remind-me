@@ -1,9 +1,11 @@
-interface OwnProps {
+import { InputHTMLAttributes } from "react";
+
+interface OwnProps extends InputHTMLAttributes<HTMLInputElement> {
   htmlFor: string;
   label: string;
 }
 
-const DatePicker: React.FC<OwnProps> = ({ htmlFor, label }) => {
+const DatePicker: React.FC<OwnProps> = ({ htmlFor, label, ...props }) => {
   return (
     <div>
       <label
@@ -18,6 +20,7 @@ const DatePicker: React.FC<OwnProps> = ({ htmlFor, label }) => {
         id={htmlFor}
         name={htmlFor}
         required
+        {...props}
       />
     </div>
   );

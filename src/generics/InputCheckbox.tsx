@@ -6,7 +6,7 @@ interface OwnProps {
 const InputCheckbox: React.FC<OwnProps> = ({ label, name }) => {
   return (
     <div className="flex items-center gap-2">
-      <input name={name} type="checkbox" id={name} value={name} required />
+      <input name={name} type="checkbox" id={name} value={name} />
       <label
         className="capitalize text-lg font-medium text-secondary flex flex-col items-start gap-1"
         htmlFor={name}

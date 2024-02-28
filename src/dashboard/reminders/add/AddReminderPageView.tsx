@@ -12,7 +12,7 @@ const AddReminderPageView: React.FC<OwnProps> = ({ remindersBehavior }) => {
   return (
     <>
       {reminderPageIsOpen && (
-        <div className="absolute z-50 top-0 right-0 bg-white p-5">
+        <div className="absolute z-50 top-0 bottom-0 right-0 bg-white border border-primary p-5">
           <div className="flex justify-end">
             <Button
               onClick={() => handleCloseAddReminderPage()}

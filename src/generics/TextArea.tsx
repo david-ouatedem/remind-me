@@ -17,7 +17,7 @@ const TextArea: React.FC<OwnProps> = ({ htmlFor, label }) => {
         name={htmlFor}
         id={htmlFor}
         cols={30}
-        rows={10}
+        rows={5}
         required
       ></textarea>
     </div>

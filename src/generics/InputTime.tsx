@@ -1,4 +1,8 @@
-const InputTime = () => {
+import { InputHTMLAttributes } from "react";
+
+interface OwnProps extends InputHTMLAttributes<HTMLInputElement> {}
+
+const InputTime: React.FC<OwnProps> = ({ ...props }) => {
   return (
     <div className="flex items-center gap-2">
       <label
@@ -13,6 +17,7 @@ const InputTime = () => {
         name="time"
         step="3600"
         className="rounded-md border border-primary outline-none focus:border-tertiary p-2 text-secondary bg-primary bg-opacity-20"
+        {...props}
       ></input>
     </div>
   );
