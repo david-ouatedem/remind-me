@@ -1,11 +1,19 @@
 import { InputHTMLAttributes } from "react";
+import { UseFormRegister } from "react-hook-form";
+import { AddReminderFormFeilds } from "../dashboard/reminders/components/ReminderForm.tsx";
 
 interface OwnProps extends InputHTMLAttributes<HTMLInputElement> {
   htmlFor: string;
   type: React.HTMLInputTypeAttribute | undefined;
+  register: UseFormRegister<AddReminderFormFeilds>;
 }
 
-const TextInput: React.FC<OwnProps> = ({ htmlFor, type, ...props }) => {
+const FormInput: React.FC<OwnProps> = ({
+  htmlFor,
+  register,
+  type,
+  ...props
+}) => {
   return (
     <div>
       <label
@@ -15,9 +23,11 @@ const TextInput: React.FC<OwnProps> = ({ htmlFor, type, ...props }) => {
         {htmlFor}:
       </label>
       <input
+        {...register("title")}
         className="rounded-md border border-primary outline-none focus:border-tertiary p-2 w-full text-secondary bg-primary bg-opacity-20"
         type={type}
         id={htmlFor}
+        name={htmlFor}
         required
         {...props}
       />
@@ -25,4 +35,4 @@ const TextInput: React.FC<OwnProps> = ({ htmlFor, type, ...props }) => {
   );
 };
 
-export default TextInput;
+export default FormInput;

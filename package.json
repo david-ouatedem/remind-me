@@ -13,14 +13,17 @@
     "@react-icons/all-files": "^4.1.0",
     "localforage": "^1.10.0",
     "match-sorter": "^6.3.4",
+    "node-cron": "^3.0.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.50.1",
     "react-router-dom": "^6.22.0",
     "sort-by": "^0.0.2",
-    "tailwind-merge": "^2.2.1"
+    "tailwind-merge": "^2.2.1",
+    "twilio": "^4.23.0"
   },
   "devDependencies": {
+    "@types/node-cron": "^3.0.11",
     "@types/react": "^18.2.55",
     "@types/react-dom": "^18.2.19",
     "@typescript-eslint/eslint-plugin": "^6.21.0",

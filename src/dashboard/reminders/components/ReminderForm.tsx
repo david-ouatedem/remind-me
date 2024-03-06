@@ -6,16 +6,16 @@ import InputCheckbox from "../../../generics/InputCheckbox.tsx";
 import InputTime from "../../../generics/InputTime.tsx";
 import RadioInput from "../../../generics/RadioInput.tsx";
 import TextArea from "../../../generics/TextArea.tsx";
-import TextInput from "../../../generics/TextInput.tsx";
+import FormInput from "../../../generics/FormInput.tsx";
 import { RemindersBehavior } from "../index/useReminders.ts";
 
 interface OwnProps {
   remindersBehavior: RemindersBehavior;
 }
 
-type AddReminderFormFeilds = {
+export type AddReminderFormFeilds = {
   title: string;
-  time: Date;
+  time: string;
   date?: Date;
   message: string;
   selectedDays?: string[];
@@ -26,16 +26,17 @@ const ReminderForm: React.FC<OwnProps> = ({ remindersBehavior }) => {
     DaysOfTheWeek;
   const { handleChangeDateRadioOption, selectedRadioOption } =
     remindersBehavior;
-  const { register, handleSubmit } = useForm<AddReminderFormFeilds>();
+  const { register, handleSubmit, reset } = useForm<AddReminderFormFeilds>();
 
   const submitAddReminderFormData: SubmitHandler<AddReminderFormFeilds> = (
     data
   ) => {
     console.log(data);
+    reset();
   };
   return (
     <form onSubmit={handleSubmit(submitAddReminderFormData)}>
-      <TextInput {...register("title")} htmlFor="title" type="text" />
+      <FormInput register={register} htmlFor="title" type="text" />
       <div className="flex items-start gap-20 mt-2">
         <div>
           <div>
@@ -47,38 +48,30 @@ const ReminderForm: React.FC<OwnProps> = ({ remindersBehavior }) => {
           </div>
           {selectedRadioOption === "jours" && (
             <div className="mt-2">
+              <InputCheckbox register={register} label="lundi" name={MONDAY} />
+              <InputCheckbox register={register} label="mardi" name={TUESDAY} />
               <InputCheckbox
-                {...register("selectedDays")}
-                label="lundi"
-                name={MONDAY}
-              />
-              <InputCheckbox
-                {...register("selectedDays")}
-                label="mardi"
-                name={TUESDAY}
-              />
-              <InputCheckbox
-                {...register("selectedDays")}
+                register={register}
                 label="mercredi"
                 name={WEDNESDAY}
               />
               <InputCheckbox
-                {...register("selectedDays")}
+                register={register}
                 label="jeudi"
                 name={THURSDAY}
               />
               <InputCheckbox
-                {...register("selectedDays")}
+                register={register}
                 label="vendredi"
                 name={FRIDAY}
               />
               <InputCheckbox
-                {...register("selectedDays")}
+                register={register}
                 label="samedi"
                 name={SATURDAY}
               />
               <InputCheckbox
-                {...register("selectedDays")}
+                register={register}
                 label="dimanche"
                 name={SUNDAY}
               />
@@ -96,7 +89,7 @@ const ReminderForm: React.FC<OwnProps> = ({ remindersBehavior }) => {
           {selectedRadioOption === "date" && (
             <div className="mt-2">
               <DatePicker
-                {...register("date")}
+                register={register}
                 htmlFor="date-picker"
                 label="choisir la date"
               />
@@ -105,14 +98,10 @@ const ReminderForm: React.FC<OwnProps> = ({ remindersBehavior }) => {
         </div>
       </div>
       <div className="mt-2">
-        <InputTime {...register("time")} />
+        <InputTime register={register} />
       </div>
       <div className="mt-2">
-        <TextArea
-          {...register("message")}
-          htmlFor="message-text"
-          label="message"
-        />
+        <TextArea register={register} htmlFor="message-text" label="message" />
       </div>
       <div className="flex items-center justify-center gap-20">
         <Button

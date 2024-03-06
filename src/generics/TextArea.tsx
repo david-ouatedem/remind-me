@@ -1,9 +1,13 @@
+import { UseFormRegister } from "react-hook-form";
+import { AddReminderFormFeilds } from "../dashboard/reminders/components/ReminderForm.tsx";
+
 interface OwnProps {
   htmlFor: string;
   label: string;
+  register: UseFormRegister<AddReminderFormFeilds>;
 }
 
-const TextArea: React.FC<OwnProps> = ({ htmlFor, label }) => {
+const TextArea: React.FC<OwnProps> = ({ htmlFor, register, label }) => {
   return (
     <div>
       <label
@@ -13,6 +17,7 @@ const TextArea: React.FC<OwnProps> = ({ htmlFor, label }) => {
         {label}:
       </label>
       <textarea
+        {...register("message")}
         className="border-2 border-primary rounded-lg bg-primary bg-opacity-20 outline-none p-2 w-full"
         name={htmlFor}
         id={htmlFor}
